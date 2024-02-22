@@ -5,25 +5,76 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/style.css">
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
-  
   <title>Frontend Mentor | Password generator app</title>
 </head>
 <body>
+  <main class="container">
+    <h1>Password Generator</h1>
+    <div class="password-field">
+      <span class="password-display">
+        <span class="password-placeholder">P4$5W0rD!</span>
+      </span>
 
-  Password Generator
+      <div class="copy-wrapper">
+        <span class="copied-text"></span>
+        <button class="copy-btn">
+          <img src="./assets/images/icon-copy.svg" alt="copy password">
+        </button>
+      </div>
+    </div>
 
-  P4$5W0rD!
+    <form class="password-settings">
+      <div class="char-length">
+        <p>Character Length</p>
+        <span class="char-count">0</span>
+      </div>
+      <input class="char-length-slider" aria-label="Password length" type="range" min="1" max="20" value="10" autocomplete="off">
 
-  Character Length
+      <div class="char-include-group">
+        <label>
+          <input type="checkbox" id="uppercase" value="uppercase" checked>
+          <span class="custom-checkbox"></span>
+          <p>Include Uppercase Letters</p>
+        </label>
 
-  Include Uppercase Letters
-  Include Lowercase Letters
-  Include Numbers
-  Include Symbols
+        <label>
+          <input type="checkbox" id="lowercase" value="lowercase" checked>
+          <span class="custom-checkbox"></span>
+          <p>Include Lowercase Letters</p>
+        </label>
 
-  Strength
+        <label>
+          <input type="checkbox" id="numbers" value="numbers" checked>
+          <span class="custom-checkbox"></span>
+          <p>Include Numbers</p>
+        </label>
 
-  Generate
-<script src="script.js"></script>
+        <label>
+          <input type="checkbox" id="symbols" value="symbols" checked>
+          <span class="custom-checkbox"></span>
+          <p>Include Symbols</p>
+        </label>
+      </div>
+
+      <div class="strength-box">
+        <span class="strength-label">Strength</span>
+        <div class="strength-rating">
+          <span class="strength-rating-text"></span>
+          <div class="strength-rating-bars">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+          </div>
+        </div>
+      </div>
+
+      <button class="generate-btn" type="submit">
+        <span>Generate</span>
+        <img src="./assets/images/icon-arrow-right.svg" alt="right arrow"> 
+      </button>
+    </form>
+  </main>
+  <script src="script.js"></script>
 </body>
 </html>
