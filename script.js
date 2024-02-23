@@ -73,12 +73,85 @@ const styleMeter = (rating) => {
     }
 }
 
+/* Password Generator */
+const calcStrength = (passwordLength, charPoolStyle) => {
+  const strength = passwordLength * Math.log2(charPoolSize);
 
+  if (strength < 25) {
+    return ['Too Weak', 1];
+  } else if (strength >= 25 && strength < 50) {
+    return ['Weak', 2];
+  } else if (strength >= 50 && strength < 75) {
+    return ['Medium', 3];
+  } else {
+    return ['Strong', 4];
+  }
+}
 
+const generatePassword = (e) => {
+  e.preventDefault();
+  try {
+    validateInput();
 
+    let generatePassword = '';
+    let includedSets = [];
+    let charPool = 0;
 
+    checkBoxes.forEach(box => {
+      if(box, checked) {
+        includedSets.push(CHARACTER_SETS[box.value][0]);
+        charPool += CHARACTER_SETS[box.value][1];
+      }
+    });
 
+    if (includedSets) {
+      for (let i = 0; i<lengthSlider.value; i++) {
+        const randSetIndex = Math.floor(Math.random() * randSet.length);
+        const randChar = randSet[randCharIndex];
 
+        generatePassword += randChar;
+      }
+    }
 
+    const strength = calcStrength(lengthSlider.value, charPool);
+    styleMeter(strength);
 
+    passwordDisplay.textContent = generatePassword;
+    canCopy = false;
+  } catch(err) {
+    console.log(err);
+  }
+}
+
+const validateInput = () => {
+  if (Array.from(checkBoxes).every(box => box.checked === false)) {
+    throw new Error('Make sure to check at least one box');
+  }
+}
+
+/* Copy Password */
+const copyPassword = async () => {
+  if (!passwordDisplay.textContent || passwordCopiedNotification.textContent) return;
+  if (!canCopy) return;
+
+  await navigator.clipboard.writeText(passwordDisplay.textContent);
+  passwordCopiedNotification.textContent = 'Copied';
+
+  setTimeout(() => {
+    passwordCopiedNotification.style.transition = 'all ls';
+    passwordCopiedNotification.style.opacity = 0;
+
+    setTimeout(() => {
+      passwordCopiedNotification.style.removeProperty('opacity');
+      passwordCopiedNotification.style.removeProperty('transition');
+      passwordCopiedNotification.textContent = '';
+    }, 1000);
+  }, 1000);
+}
+
+charCount.textContent = lengthSlider.value;
+
+passwordCopyButton.addEventListener('click', copyPassword);
+lengthSlider.addEventListener('input', handleSliderInput);
+passwordForm.addEventListener('submit', generatePassword);
 
