@@ -43,7 +43,35 @@ const resetBarStyles = () => {
     });
 }
 
+const styleBars = ([...barElements], color) => {
+    barElements.forEach(bar => {
+        bar.style.backgroundColor = color;
+        bar.style.borderColor = color;
+     });
+}
 
+const styleMeter = (rating) => {
+    const text = rating[0];
+    const numBars = rating[1];
+    const barsToFill = Array.from(strengthRatingBars).slice(0, numBars);
+
+    resetBarStyles();
+
+    strengthDescription.textContent = text;
+
+    switch(numBars) {
+        case 1:
+          return styleBars(barsToFill, 'hsl(0, 91%, 63%)');
+        case 2:
+          return styleBars(barsToFill, 'hsl(13, 95%, 66%)');
+        case 3:
+          return styleBars(barsToFill, 'hsl(42, 91%, 68%)');
+        case 4:
+          return styleBars(barsToFill, 'hsl(127, 100%, 82%)');
+        default:
+          throw new Error('Invalid value for numBars');      
+    }
+}
 
 
 
