@@ -105,4 +105,263 @@ p {
     color: hsl(127, 100%, 82%);
 }
 
+.char-length-slider {
+    -webkit-appearance: none;
+    margin-right: .9375rem;
+    width: 100%;
+    height: .4375rem;
+    margin-bottom: 3.6rem;
+    background: hsl(248, 15%, 11%);
+    background-image: linear-gradient(hsl(127, 100%, 82%), hsl(127, 100%, 82%));
+    background-size: 50% 100%;
+    background-repeat: no-repeat;
+}
+
+/* Chrome */
+.char-length-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 1.75rem;
+    width: 1.75rem;
+    border: .125rem solid hsl(252, 11%, 91%);
+    border-radius: 50%;
+    background-color: hsl(252, 11%, 91%);
+    cursor: pointer;
+}
+
+.char-length-slider::-webkit-slider-thumb:hover {
+    border: 2px solid hsl(127, 100%, 82%);
+    background-color: hsl(248, 15%, 11%);
+}
+
+.char-length-slider::-webkit-slider-runnable-track {
+    -webkit-appearance: none;
+    box-shadow: none;
+    border: none;
+    background: transparent;
+}
+
+/* Firefox */
+.char-length-slider::-moz-range-thumb {
+    -moz-appearance: none;
+    height: 1.75rem;
+    width: 1.75rem;
+    border: .125rem solid hsl(252, 11%, 91%);
+    border-radius: 50%;
+    background-color: hsl(252, 11%, 91%);
+    cursor: pointer;
+}
+
+.char-length-slider::-moz-range-thumb:hover,
+.char-length-slider::-moz-range-thumb:active {
+    border: .125rem solid hsl(127, 100%, 82%);
+    background-color: hsl(248, 15%, 11%);
+}
+
+/* Checkboxes */
+.char-include-group {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-bottom: 2.4rem;
+}
+
+label {
+    display: block;
+    padding-left: 4.4rem;
+    position: relative;
+}
+
+input[type=checkbox] {
+    position: absolute;
+    width: 0;
+    height: 0;
+    opacity: 0;
+}
+
+.custom-checkbox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: .125rem;
+    left: 0;
+    height: 2rem;
+    width: 2rem;
+    border: .125rem solid hsl(252, 11%, 91%);
+    cursor: pointer;
+}
+
+.custom-checkbox::after {
+    display: none;
+    content: url('../assets/images/icon-check.svg');
+    position: absolute;
+    top: 3px;
+}
+
+.custom-checkbox:hover {
+    border-color: hsl(127, 100%, 82%);
+}
+
+input[type=checkbox]:checked ~ .custom-checkbox {
+    border-color: hsl(127, 100%, 82%);
+    background-color: hsl(127, 100%, 82%);
+}
+
+input[type=checkbox]:checked ~ .custom-checkbox::after {
+    display: block;
+}
+
+input[type=checkbox]:focus ~ .custom-checkbox {
+    outline: .125rem solid Highlight;
+    outline: .125rem solid -webkit-focus-ring-color;
+}
+
+/* Password Strength */
+.strength-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    color: hsl(251, 9%, 53%);
+    margin-bottom: 3.2rem;
+    padding: 0 3.2rem;
+    height: 7.2rem;
+    background-color: hsl(248, 10%, 15%);
+}
+
+.strength-rating {
+    display: flex;
+    align-items: center;
+    gap: 1.4rem;
+}
+
+.strength-rating-text {
+    font-size: 2.4rem;
+    color: hsl(252, 11%, 91%);
+}
+
+.strength-rating-bars {
+    display: flex;
+    gap: 0.8rem;
+}
+
+.bar {
+    width: 1rem;
+    height: 2.8rem;
+    border: .125rem solid hsl(252, 11%, 91%);
+    background: none;
+}
+
+/* Generate Button */
+.generate-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2.2rem;
+    font-family: inherit;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    color: hsl(247, 11%, 15%);
+    width: 100%;
+    padding: 1.9rem 0;
+    border: .125rem solid hsl(247, 11%, 15%);
+    background-color: hsl(247, 11%, 15%);
+    cursor: pointer;
+}
+
+.generate-btn:hover {
+    color: hsl(127, 100%, 82%);
+    background-color: hsl(247, 11%, 15%);
+}
+
+.generate-btn:hover path {
+    fill: #a3ffae;
+}
+
+@media (max-width: 36em) {
+    .container {
+        width: 91.6%;
+    }
+
+    p {
+        font-size: 1.6rem;
+    }
+
+    .password-display,
+    .password-placeholder {
+        font-size: 2.4rem;
+    }
+
+    .password-field {
+        height: 4rem;
+        margin-bottom: 1.6rem;
+    }
+
+    .char-count {
+        font-size: 2.8rem;
+    }
+
+    .strength-box {
+        height: 3.5rem;
+    }
+}
+
+@media (max-width: 27em) {
+    .password-settings {
+        padding: 2.4rem 1.6rem 3.2rem;
+    }
+
+    .strength-rating-text {
+        font-size: 1.6rem;
+    }
+}
+
+@media (max-width: 24em) {
+    h1 {
+        font-size: 1.6rem;
+        margin-bottom: 1.6rem;
+    }
+
+    .password-settings {
+        padding: 1.6rem;
+    }
+
+    .char-length {
+        margin-bottom: 1.6rem;
+    }
+
+    .char-length-slider {
+        height: .5rem;
+        margin-bottom: 4.2rem;
+    }
+
+    .char-count {
+        font-size: 2.4rem;
+    }
+
+    .char-include-group {
+        gap: 1.6rem;
+        margin-bottom: 3.2rem;
+    }
+
+    .strength-box {
+        margin-bottom: 1.6rem;
+        padding: 0 1.6rem;
+    }
+
+    .strength-label {
+        font-size: 1.8rem;
+    }
+
+    .generate-btn {
+        padding: 1.5rem 0;
+        font-size: 1.6rem;
+    }
+}
+
+
+
+
+
 
